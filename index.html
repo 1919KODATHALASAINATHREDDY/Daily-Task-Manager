@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Task Organizer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="main-wrapper">
+        <div class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">
+                    <span class="icon-wrapper">📋</span>
+                    Daily Task Organizer
+                </h1>
+                <p class="app-subtitle">Manage your daily activities with smart categorization</p>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <!-- Task Input Section -->
+            <div class="input-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">➕ Create New Activity</h2>
+                </div>
+                
+                <form id="activityForm" class="activity-form">
+                    <div class="input-row">
+                        <div class="input-field">
+                            <label for="activityName">Activity Name:</label>
+                            <input type="text" id="activityName" name="activityName" 
+                                   placeholder="What do you need to do?" required>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-field">
+                            <label for="activityType">Activity Type:</label>
+                            <select id="activityType" name="activityType" required>
+                                <option value="">Choose activity type</option>
+                                <option value="Professional">Professional</option>
+                                <option value="Academic">Academic</option>
+                                <option value="Personal">Personal</option>
+                                <option value="Fitness">Fitness</option>
+                                <option value="Shopping">Shopping</option>
+                                <option value="Miscellaneous">Miscellaneous</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-field">
+                            <label>Priority Level:</label>
+                            <div class="priority-selector">
+                                <input type="radio" id="priority1" name="priorityLevel" value="urgent" class="priority-radio">
+                                <label for="priority1" class="priority-option urgent">🔴 Urgent</label>
+                                
+                                <input type="radio" id="priority2" name="priorityLevel" value="important" class="priority-radio">
+                                <label for="priority2" class="priority-option important">🟡 Important</label>
+                                
+                                <input type="radio" id="priority3" name="priorityLevel" value="normal" class="priority-radio">
+                                <label for="priority3" class="priority-option normal">🟢 Normal</label>
+                                
+                                <input type="radio" id="priority4" name="priorityLevel" value="low" class="priority-radio">
+                                <label for="priority4" class="priority-option low">⚪ Low</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-field">
+                            <label for="activityNotes">Additional Notes (Optional):</label>
+                            <textarea id="activityNotes" name="activityNotes" 
+                                      placeholder="Add any additional details about this activity..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">
+                            <span class="btn-icon">➕</span>
+                            Add Activity
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Activity Display Section -->
+            <div class="display-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">📝 Your Activities</h2>
+                    <div class="filter-tools">
+                        <select id="typeFilter" class="filter-dropdown">
+                            <option value="">All Types</option>
+                            <option value="Professional">Professional</option>
+                            <option value="Academic">Academic</option>
+                            <option value="Personal">Personal</option>
+                            <option value="Fitness">Fitness</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Miscellaneous">Miscellaneous</option>
+                        </select>
+                        <select id="priorityFilter" class="filter-dropdown">
+                            <option value="">All Priorities</option>
+                            <option value="urgent">Urgent</option>
+                            <option value="important">Important</option>
+                            <option value="normal">Normal</option>
+                            <option value="low">Low</option>
+                        </select>
+                        <button id="resetFilters" class="reset-btn">
+                            <span class="btn-icon">🔄</span>
+                            Reset
+                        </button>
+                    </div>
+                </div>
+
+                <div class="activities-container">
+                    <div id="activitiesList" class="activities-grid">
+                        <!-- Activities will be dynamically added here -->
+                    </div>
+                </div>
+
+                <div class="summary-cards">
+                    <div class="summary-card total">
+                        <div class="card-icon">📊</div>
+                        <div class="card-content">
+                            <h3>Total Activities</h3>
+                            <span id="totalActivities">0</span>
+                        </div>
+                    </div>
+                    <div class="summary-card completed">
+                        <div class="card-icon">✅</div>
+                        <div class="card-content">
+                            <h3>Completed</h3>
+                            <span id="completedActivities">0</span>
+                        </div>
+                    </div>
+                    <div class="summary-card pending">
+                        <div class="card-icon">⏳</div>
+                        <div class="card-content">
+                            <h3>Pending</h3>
+                            <span id="pendingActivities">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Empty State Message -->
+    <div id="emptyMessage" class="empty-message" style="display: none;">
+        <div class="empty-content">
+            <div class="empty-icon">📝</div>
+            <h3>No activities yet!</h3>
+            <p>Start by creating your first activity above.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
